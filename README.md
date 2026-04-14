@@ -78,19 +78,21 @@ npm run dev
 ---
 
 ### Projektstruktur
-task-manager/ 
-│ 
-├── backend/ 
-│   ├── controllers/ 
-│   ├── models/ 
-│   ├── routes/ 
-│   └── server.js
-│ 
-├── frontend/
-│   ├── components/
-│   ├── pages/
-│   ├── services/ 
-│   └── App.jsx 
-│ 
-├── thesis-notes.md 
-└── README.md
+```
+task-manager/                                                                                                           
+│                                                                                                                       
+├── backend/                                                                                                            
+│   ├── controllers/                                                                                                    
+│   ├── models/                                                                                                         
+│   ├── routes/                                                                                                         
+│   └── server.js                                                                                                       
+│                                                                                                                       
+├── frontend/                                                                                                           
+│   ├── components/                                                                                                     
+│   ├── pages/                                                                                                          
+│   ├── services/                                                                                                       
+│   └── App.jsx                                                                                                         
+│                                                                                                                       
+├── thesis-notes.md                                                                                                     
+└── README.md     
+```                                                                                                      
