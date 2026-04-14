@@ -34,15 +34,30 @@ Målet med projektet är att:
 
 ---
 
+## Krav
+
+Följande behöver vara installerat:
+
+- Node.js
+- npm
+- MongoDB
+
+---
+
 ## Kom igång
 
 ### 1. Klona repot
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/mita2323/task-manager.git
 cd task-manager
 ```
+### 2. Starta MongoDB
 
-### 2. Starta Backend
+```bash
+mongod --dbpath ./data/db
+```
+
+### 3. Starta Backend
 ```bash
 cd backend
 npm install
@@ -57,7 +72,7 @@ Starta servern:
 npm run dev
 ```
 
-### 3. Starta Frontend
+### 4. Starta Frontend
 ```bash
 cd frontend
 npm install
@@ -79,20 +94,20 @@ npm run dev
 
 ### Projektstruktur
 ```
-task-manager/                                                                                                           
-│                                                                                                                       
-├── backend/                                                                                                            
-│   ├── controllers/                                                                                                    
-│   ├── models/                                                                                                         
-│   ├── routes/                                                                                                         
-│   └── server.js                                                                                                       
-│                                                                                                                       
-├── frontend/                                                                                                           
-│   ├── components/                                                                                                     
-│   ├── pages/                                                                                                          
-│   ├── services/                                                                                                       
-│   └── App.jsx                                                                                                         
-│                                                                                                                       
-├── thesis-notes.md                                                                                                     
-└── README.md     
-```                                                                                                      
+task-manager/
+│ 
+├── backend/ 
+│   ├── controllers/ 
+│   ├── models/ 
+│   ├── routes/ 
+│   └── server.js
+│ 
+├── frontend/
+│   ├── components/
+│   ├── pages/
+│   ├── services/ 
+│   └── App.jsx 
+│ 
+├── thesis-notes.md 
+└── README.md
+```
