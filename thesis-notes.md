@@ -86,3 +86,55 @@ Frontend (Vitest):
 └── Homepage: Filter state changes
 
 ---
+
+# Fas 3 – Enhetstestning
+
+## Syfte
+Att införa automatiserade enhetstester i frontend och backend för att undersöka hur detta påverkar testtäckning och identifiering av defekter.
+
+## Verktyg
+- Frontend: Vitest
+- Backend: Jest
+
+## Mätvärden
+- Antal tester
+- Testtäckning (coverage)
+- Identifierade defekter
+- Reflektioner kring utvecklingsprocessen
+
+## Backend - enhetstestning
+
+Enhetstester implementerades för taskController med hjälp av Jest. Databasmodellen mockades för att isolera controller-logiken från MongoDB.
+
+Totalt implementerades 14 tester för följande funktioner:
+- getTasks
+- createTask
+- updateTask
+- deleteTask
+
+Testfallen omfattade både normala scenarier och felhantering, inklusive:
+- hämtning av tasks utan filter
+- filtrering av aktiva och slutförda tasks
+- skapande av task med giltig indata
+- validering av saknad titel
+- uppdatering och borttagning av existerande task
+- hantering av fall där task inte hittades
+- simulerade databasfel
+
+Resultatet visade att samtliga 14 tester godkändes.
+
+### Coverage
+- Statements: 100%
+- Branches: 100%
+- Functions: 100%
+- Lines: 100%
+
+### Reflektioner
+- Backend var relativt enkel att enhetstesta eftersom logiken kunde isoleras från databasen genom mocking.
+- Testerna gjorde det möjligt att verifiera både funktionellt beteende och felhantering på ett systematiskt sätt.
+- En tydlig fördel var att flera olika utfall kunde kontrolleras snabbt utan manuell testning.
+
+## Frontend - enhetstestning
+
+
+

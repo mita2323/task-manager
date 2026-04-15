@@ -1,3 +1,4 @@
 data/
-data/db/diagnostic.data/
-data/db/*.wt
+node_modules/
+coverage/
+.env
