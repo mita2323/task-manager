@@ -9,31 +9,39 @@ function TaskForm({ onAddTask }) {
 
     if (!title.trim()) return;
 
-    onAddTask({ title, description });
+    onAddTask({
+      title: title.trim(),
+      description: description.trim(),
+    });
+
     setTitle("");
     setDescription("");
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ marginBottom: "1.5rem" }}>
-      <div>
+    <form className="task-form" onSubmit={handleSubmit}>
+      <div className="form-field">
+        <label htmlFor="title">Title</label>
         <input
+          id="title"
           type="text"
-          placeholder="Task title"
+          placeholder="Enter task title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
       </div>
 
-      <div style={{ marginTop: "0.5rem" }}>
+      <div className="form-field">
+        <label htmlFor="description">Description</label>
         <textarea
-          placeholder="Description"
+          id="description"
+          placeholder="Enter task description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
       </div>
 
-      <button type="submit" style={{ marginTop: "0.5rem" }}>
+      <button type="submit" className="primary-button">
         Add task
       </button>
     </form>
