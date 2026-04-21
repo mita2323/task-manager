@@ -81,6 +81,48 @@ npm run dev
 
 ---
 
+## Testning
+
+Projektet använder automatiserad testning i både backend och frontend.
+
+### Backend (Jest)
+
+Installera beroenden:
+```bash
+cd backend
+npm install
+```
+
+Kör tester:
+```bash
+npm test
+```
+
+Kör tester med coverage:
+```bash
+npm run test:coverage
+```
+
+### Frontend (Vitest)
+
+Installera beroenden:
+```bash
+cd frontend
+npm install
+```
+
+Kör tester:
+```bash
+npm test
+```
+
+Kör tester med coverage:
+```bash
+npm run test:coverage
+```
+
+---
+
 ### API Endpoints
 
 | Metod      | Endpoint         | Beskrivning         |
