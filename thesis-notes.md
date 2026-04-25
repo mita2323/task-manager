@@ -72,21 +72,6 @@ Identifierade brister: 4
 
 ---
 
-## Fas 3: Enhetstester (Planerad)
-
-### Planerade ändringar
-Backend (Jest):
-├── Unit: Controllers (createTask, updateTask)
-├── Integration: Routes + DB mocks
-└── Coverage: Jest --coverage
-
-Frontend (Vitest):
-├── TaskForm: Submit validation
-├── TaskList: Render + toggle/delete
-└── Homepage: Filter state changes
-
----
-
 # Fas 3 – Enhetstestning
 
 ## Syfte
@@ -202,3 +187,41 @@ Frontend: 8.5 timmar
 Backend + frontend: 16 timmar
 
 ---
+
+# Fas 4 - End-to-end-tester
+
+Målet är att undersöka hur E2E-tester påverkar:
+- Regressionssäkerhet
+- Verifiering av hela systemflöden
+- Utvecklingsprocessen jämfört med manuell testning och enbart enhetstester
+
+## Verktyg
+- Playwright
+
+## Testade användarflöden
+- Skapa task
+- Visa task i listan
+- Markera task som klar
+- Ta bort task
+- Validering vid ogiltig indata
+
+## Observationer
+
+Implementationen av end-to-end-tester med Playwright visade att denna testnivå skiljer sig tydligt från både manuell testning och enhetstestning. En viktig observation var att testerna behövde hantera asynkrona beteenden i systemet. Exempelvis krävdes explicita väntetider och synkronisering, eftersom UI:t uppdateras först efter API-anrop till backend. Detta märktes särskilt vid markering av task som klar och vid validering av indata.
+
+Valet av locatorer visade sig också vara avgörande. Enkla locatorer som `getByText()` fungerade inte alltid när vidare interaktion med relaterade element krävdes. I dessa fall var mer specifika locatorer, såsom `locator('li', { hasText: title })`, mer robusta och flexibla. Vidare observerades att testerna påverkades av att de kördes parallellt i flera webbläsare och delade samma databas. Detta innebar att testdata kunde förändras under körning, vilket gjorde det svårare att använda absoluta värden (t.ex. exakt antal tasks) i assertions. En annan observation var att vissa problem inte framträdde i enhetstester, utan först i end-to-end-tester. Detta gällde särskilt interaktion mellan frontend och backend, samt hur data renderas i användargränssnittet.
+
+## Reflektioner
+
+End-to-end-testning bidrog till en högre grad av regressionssäkerhet jämfört med tidigare faser. Genom att automatiskt verifiera centrala användarflöden blev det enklare att upptäcka om förändringar i koden påverkade systemets funktionalitet negativt. Samtidigt var end-to-end-tester mer komplexa att implementera än enhetstester. De krävde mer tid för felsökning, särskilt på grund av asynkrona flöden och beroenden till systemets tillstånd. Detta gjorde utvecklingsprocessen långsammare i början.
+
+Jämfört med manuell testning gav Playwright en mer systematisk och reproducerbar testprocess. Tester kunde köras flera gånger med samma resultat, vilket minskade risken för att fel förbises. Detta innebar en tydlig förbättring i kvalitetssäkringen. Dock visade fasen också att end-to-end-testning har begränsningar. Tester kan bli känsliga för förändringar i UI:t och kräver stabila testförutsättningar, exempelvis kontrollerad testdata. Utan databasisolering finns risk att tester påverkar varandra.
+
+Sammanfattningsvis fungerade end-to-end-tester som ett viktigt komplement till enhetstester. Medan enhetstester verifierar enskilda delar av systemet, säkerställer end-to-end-tester att hela systemflöden fungerar korrekt i ett realistiskt användarscenario.
+
+### Tid använt
+Implementering av Playwright och första test: 1.5h
+Utveckling av testfall: 2.5h
+Felsökning och stabilisering av tester: 2h
+
+Total Fas 4: 6 timmar

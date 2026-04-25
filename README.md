@@ -83,7 +83,7 @@ npm run dev
 
 ## Testning
 
-Projektet använder automatiserad testning i både backend och frontend.
+Projektet använder automatiserad testning i flera nivåer: backend, frontend och end-to-end.
 
 ### Backend (Jest)
 
@@ -121,6 +121,31 @@ Kör tester med coverage:
 npm run test:coverage
 ```
 
+### End-to-end (Playwright)
+
+Installera Playwright:
+```bash
+cd frontend
+npm init playwright@latest
+```
+
+Starta applikationen
+```bash
+# Backend
+cd backend
+npm run dev
+
+# Frontend
+cd frontend
+npm run dev
+```
+
+Kör E2E-tester
+```bash
+cd frontend
+npx playwright test
+```
+
 ---
 
 ### API Endpoints
@@ -142,14 +167,19 @@ task-manager/
 │   ├── controllers/ 
 │   ├── models/ 
 │   ├── routes/ 
+│   ├── tests/
 │   └── server.js
 │ 
 ├── frontend/
-│   ├── components/
-│   ├── pages/
-│   ├── services/ 
-│   └── App.jsx 
-│ 
+│    ├── src/
+│    │    ├── components/
+│    │    ├── pages/
+│    │    ├── services/ 
+│    │    ├── test/
+│    │    ├── main.jsx
+│    │    └── App.jsx
+│    └── tests/
+│
 ├── thesis-notes.md 
 └── README.md
 ```
