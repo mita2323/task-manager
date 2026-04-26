@@ -8,7 +8,7 @@ const getTasks = async (req, res) => {
     if (filter === 'completed') query.completed = true;
     const tasks = await Task.find(query).sort({ createdAt: -1 });
     res.json(tasks);
-  } catch (error) {
+  } catch {
     res.status(500).json({ message: "Failed to fetch tasks" });
   }
 };
@@ -22,7 +22,7 @@ const createTask = async (req, res) => {
       description: description?.trim() || '' 
     });
     res.status(201).json(task);
-  } catch (error) {
+  } catch {
     res.status(500).json({ message: "Create failed" });
   }
 };
@@ -36,7 +36,7 @@ const updateTask = async (req, res) => {
     });
     if (!task) return res.status(404).json({ message: "Task not found" });
     res.json(task);
-  } catch (error) {
+  } catch {
     res.status(500).json({ message: "Update failed" });
   }
 };
@@ -47,7 +47,7 @@ const deleteTask = async (req, res) => {
     const task = await Task.findByIdAndDelete(id);
     if (!task) return res.status(404).json({ message: "Task not found" });
     res.json({ message: "Deleted" });
-  } catch (error) {
+  } catch {
     res.status(500).json({ message: "Delete failed" });
   }
 };

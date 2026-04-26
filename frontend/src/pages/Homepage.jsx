@@ -19,14 +19,15 @@ function HomePage() {
       const data = await getTasks(filter);
       setTasks(data);
       setError("");
-    } catch (err) {
+    } catch {
       setError("Failed to load tasks");
     }
   };
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     fetchTasks();
-  }, [filter]);
+  }, [filter]); 
 
   const handleAdd = async (data) => {
     try {
@@ -34,8 +35,8 @@ function HomePage() {
       setTasks((prev) => [newTask, ...prev]);
       setError("");
     } catch (err) {
-      setError(err.response?.data?.message || "Failed to create task");
-    }
+        setError(err.response?.data?.message || "Failed to create task");
+      }
   };
 
   const handleToggle = async (id) => {
@@ -46,7 +47,7 @@ function HomePage() {
       const updated = await updateTask(id, { completed: !task.completed });
       setTasks((prev) => prev.map((t) => (t._id === id ? updated : t)));
       setError("");
-    } catch (err) {
+    } catch {
       setError("Failed to update task");
     }
   };
@@ -56,7 +57,7 @@ function HomePage() {
       await deleteTask(id);
       setTasks((prev) => prev.filter((t) => t._id !== id));
       setError("");
-    } catch (err) {
+    } catch {
       setError("Failed to delete task");
     }
   };
